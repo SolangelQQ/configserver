@@ -36,5 +36,4 @@ logging:
 networks:
   client:
     url: http://client:7002
-  identity:
-    url: http://identity:7004
+  
