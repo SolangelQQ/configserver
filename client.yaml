@@ -1,18 +1,5 @@
 server:
   port: 7002
-api:
-  responseCodes:
-    ok.description : OK
-    badRequest.description: Bad Request, invalid format of the request. See response message for more information
-    internalServer.description: Internal Server Error. See response message for more information
-springdoc:
-    swagger-ui.path: /openapi/swagger-ui.html
-    api-docs.path: /openapi/v3/api-docs
-    packagesToScan: com.ucb.demo
-    pathsToMatch: /**
-sentry:
-  dsn: https://88e6c0ecfd857e5f037cc0766ce0c679@o426110.ingest.us.sentry.io/4507127922491392
-  traces-sample-rate: 1.0
 management:
   endpoints:
     web:
@@ -21,16 +8,21 @@ management:
   otlp:
     tracing:
       endpoint: http://localhost:4318/v1/traces
-  tracing:
+ 
+      jaeger:
+        enabled: true
+        log-spans: true
+        sender-type: http
+        const-sampler:
+          type: const
+          param: 1
+        remote-reporter:
+          endpoint: http://localhost:4318/v1/traces
     sampling:
       probability: 1.0
+
 logging:
   level:
     root: debug
   pattern:
     level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
-networks:
-  greeting:
-    url: http://greeting:9090
-  identity:
-    url: http://identity:7004
