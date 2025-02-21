@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ucb.android.library)
     alias(libs.plugins.kotlin.kapt)
-
 }
 
 android {
