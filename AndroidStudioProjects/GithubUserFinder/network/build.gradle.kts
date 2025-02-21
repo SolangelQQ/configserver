@@ -40,7 +40,6 @@ dependencies {
     implementation(libs.moshi)
     implementation(libs.converter.moshi)
     kapt(libs.moshi.kapt)
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
